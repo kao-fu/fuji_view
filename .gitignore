@@ -1,0 +1,5 @@
+.DS_Store
+.env
+backend/data/aircraft/*.csv
+backend/data/own/*.nc
+!**/.gitkeep
