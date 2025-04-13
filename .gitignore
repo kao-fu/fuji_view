@@ -1,5 +1,6 @@
 .DS_Store
 .env
+**/__pycache__/
 backend/data/aircraft/*.csv
 backend/data/own/*.nc
 !**/.gitkeep

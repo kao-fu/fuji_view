@@ -8,5 +8,6 @@ export const fetchFlightPath = async (flightId: string) => {
     if (res.data.found === false) {
         throw new Error('Flight not found');
     }
+    console.log(res.data);
   return res.data;
 };

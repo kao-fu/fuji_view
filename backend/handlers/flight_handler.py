@@ -17,5 +17,5 @@ def get_flight_path(flight_id: str):
     if filtered.empty:
         return {"found": False}
 
-    coords = filtered[["latitude", "longitude", "time"]].to_dict(orient="records")
+    coords = filtered[["latitude", "longitude", "height", "time", "index"]].to_dict(orient="records")
     return {"found": True, "path": coords}

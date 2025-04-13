@@ -13,4 +13,4 @@ run-frontend:
 
 .PHONY: run-backend
 run-backend:
-	cd $(BACKEND_DIR) && uvicron main:app --reload
+	cd $(BACKEND_DIR) && uvicorn main:app --reload

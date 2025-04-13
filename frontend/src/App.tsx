@@ -14,12 +14,20 @@ function App() {
 
   const handleSearch = async () => {
     const data = await fetchFlightPath(flightId);
-    console.log(data);
 
     if (data.found) {
-      const validPath = data.path.filter(
-        (point: Point) => point.lat !== undefined && point.lon !== undefined
-      );
+      const validPath = data.path.map((point: { latitude: number; longitude: number; time: string; index: number }, index: number) => ({
+        lat: point.latitude,
+        lon: point.longitude,
+        timestamp: point.time,
+        index: index, // Add index for secondary sorting
+      }));
+
+      validPath.sort((a, b) => {
+        const timeComparison = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+        return timeComparison !== 0 ? timeComparison : a.index - b.index;
+      });
+
       setPath(validPath);
     } else {
       alert('Flight not found');
@@ -28,8 +36,21 @@ function App() {
   };
 
   return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ padding: '1rem', backgroundColor: '#f0f0f0' }}>
+    <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
+      {/* Map fills the entire viewport */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        <Map path={path} />
+      </div>
+      
+      <div style={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        width: '100%',
+        padding: '1rem', 
+        backgroundColor: 'rgba(240, 240, 240, 0.8)', 
+        zIndex: 1000 
+      }}>
         <input
           type="text"
           value={flightId}
@@ -38,9 +59,6 @@ function App() {
           style={{ marginRight: '0.5rem' }}
         />
         <button onClick={handleSearch}>Search</button>
-      </div>
-      <div style={{ flex: 1 }}>
-        <Map path={path} />
       </div>
     </div>
   );
