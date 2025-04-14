@@ -31,7 +31,6 @@ const Map: React.FC<Props> = ({ path }) => {
       markers.push(marker);
       bounds.extend(marker.getLatLng());
     });
-
     // Add a red line connecting points
     if (path.length > 1) {
       const latLngs = path.map(point => [point.lat, point.lon] as [number, number]);
@@ -40,8 +39,26 @@ const Map: React.FC<Props> = ({ path }) => {
 
     // Adjust map bounds to fit all points
     if (path.length > 0) {
-      map.fitBounds(bounds, {padding: [20, 20]});
+      map.fitBounds(bounds, { padding: [20, 20] });
     }
+
+    // Add click event to markers to display information
+    markers.forEach((marker, index) => {
+      marker.on('click', () => {
+      const point = path[index];
+      console.log(point);
+      const popupContent = `
+        <div>
+        <p><strong>Latitude:</strong> ${point.lat}</p>
+        <p><strong>Longitude:</strong> ${point.lon}</p>
+        <p><strong>Height:</strong> N/A</p>
+        <p><strong>Time:</strong> ${point.timestamp}</p>
+        <button id="generate-figure-btn">Generate Figure</button>
+        </div>
+      `;
+      marker.bindPopup(popupContent).openPopup();
+      });
+    });
 
     // Cleanup on component unmount
     return () => {
