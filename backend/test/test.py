@@ -33,7 +33,8 @@ def find_nearest_grid_point(lon_array, lat_array, target_lon, target_lat):
 
     # Find the indices of the minimum distance
     idx = np.unravel_index(np.argmin(distance), distance.shape)
-    return idx
+    latIdx, lonIdx = idx[0], idx[1]
+    return latIdx, lonIdx
 
 #def ray_track(start_point, rayVectorMesh, longtitude, latitude, altitude, cloud):
 def ray_track(start_point, rayVectorMesh, lat, lon, altitude, variable):
@@ -48,13 +49,13 @@ def ray_track(start_point, rayVectorMesh, lat, lon, altitude, variable):
     encounterHeight = altitude[encounterHeightIdx]
     factor = np.abs((start_point[2] - encounterHeight) / ray[2])
     checkPoint = start_point + factor * ray
-    idxs = find_nearest_grid_point(lon, lat, checkPoint[1], checkPoint[0])
-    while encounterHeightIdx > 0 and variable[encounterHeightIdx, idxs[0], idxs[1]] != -999.99:
+    latIdx, lonIdx = find_nearest_grid_point(lon, lat, checkPoint[0], checkPoint[1])
+    while encounterHeightIdx > 0 and variable[encounterHeightIdx, latIdx, lonIdx] != -999.99:
         factor = np.abs((checkPoint[2] - altitude[encounterHeightIdx]) / ray[2])
         checkPoint = checkPoint + factor * ray
-        idxs = find_nearest_grid_point(lon, lat, checkPoint[1], checkPoint[0])
+        latIdx, lonIdx = find_nearest_grid_point(lon, lat, checkPoint[1], checkPoint[0])
         encounterHeightIdx -= 1
-        print(checkPoint)
+        print(checkPoint, variable[encounterHeightIdx, latIdx, lonIdx])
 
     return None
 
@@ -98,10 +99,10 @@ def ray_march_check_occlusion(
 
 if __name__ == "__main__":
     # Open the netCDF file
-    data = nc.Dataset("./zMcPhy.nc")
+    data = nc.Dataset("./zMcPhy17.nc")
     
     aircraft = {"latitude": 34.72833251953125, "longitude": 139.1999969482422, "altitude": 5486.4}
-    fujisan  = {"latitude": 35.3606583, "longitude": 138.7068067, "altitude": 3776.0}
+    fujisan  = {"latitude": 35.3606583, "longitude": 138.7068067, "altitude": 1500} #3776.0}
     # Extract the variables
     lon, lat = data["longitude"], data["latitude"]
     height = np.array(data["height"])
@@ -136,4 +137,4 @@ if __name__ == "__main__":
 
     idx = find_nearest_grid_point(lon, lat, aircraft["longitude"], aircraft["latitude"])
 
-    ray_track([aircraft["latitude"], aircraft["longitude"], aircraft["altitude"]], ray_dirs, lat, lon, height, cloud)
+    ray_track([aircraft["longitude"], aircraft["latitude"], aircraft["altitude"]], ray_dirs, lat, lon, height, cloud)
