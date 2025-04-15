@@ -1,6 +1,8 @@
 .DS_Store
 .env
+*.nc
 *.jpg
+*.png
 **/__pycache__/
 backend/data/aircraft/*.csv
 backend/data/own/*.nc
