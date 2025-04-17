@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from handlers import flight_handler
+from handlers import flight_handler, tmp_model_handler
 
 app = FastAPI()
 
@@ -14,6 +14,7 @@ app.add_middleware(
 )
 
 app.include_router(flight_handler.router)
+app.include_router(tmp_model_handler.router)
 
 @app.get("/")
 def root():

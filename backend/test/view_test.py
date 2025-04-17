@@ -8,8 +8,6 @@ from matplotlib.cm import get_cmap
 #import cartopy.feature as cfeature
 from scipy.spatial import cKDTree
 
-
-
 def find_nearest_grid_indices(worldx, worldy, points):
     nx, ny = worldx.shape
 

@@ -1,0 +1,34 @@
+{
+    "position_info": {
+        "start_position": {
+            "longitude": 139.1999969482422,
+            "latitude":   34.72833251953125,
+            "altitude": 5486.4,
+            "x": 0,
+            "y": 0
+        },
+        "end_position": {
+            "longitude": 138.7068067,
+            "latitude":   35.3606583,
+            "altitude": 3776.0,
+            "x": 0,
+            "y": 0
+        }
+    }, 
+
+    "modelParameter": {
+        "altitudeResolutionInMeter": 500,
+        "viewVerticalDegree": 20,
+        "viewHorizontalDegree": 90,
+        "invalidValue": -9999.99,
+        "considerVariable": ["CLMR"],
+        "figureHorizontalPixel": 256,
+        "figureVerticalPixel": 256,
+        "pressureCoordinateInhPa": [1000, 975, 950, 925, 900, 875, 850, 800, 750, 700, 650, 600, 550, 500, 400, 300, 200],
+        "year": 2025,
+        "month": 4,
+        "day": 9,
+        "hour": 17
+    }
+
+}
