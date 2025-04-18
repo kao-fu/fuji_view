@@ -24,11 +24,7 @@
         "considerVariable": ["CLMR"],
         "figureHorizontalPixel": 256,
         "figureVerticalPixel": 256,
-        "pressureCoordinateInhPa": [1000, 975, 950, 925, 900, 875, 850, 800, 750, 700, 650, 600, 550, 500, 400, 300, 200],
-        "year": 2025,
-        "month": 4,
-        "day": 9,
-        "hour": 17
+        "pressureCoordinateInhPa": [1000, 975, 950, 925, 900, 875, 850, 800, 750, 700, 650, 600, 550, 500, 400, 300, 200]
     }
 
 }

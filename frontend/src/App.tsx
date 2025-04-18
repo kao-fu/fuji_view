@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Map from './components/Map';
+import SettingsForm from './components/SettingsForm';
 import { fetchFlightPath } from './api/flight';
+import axios from 'axios';
 
 interface Point {
   lat: number;
@@ -11,6 +13,7 @@ interface Point {
 function App() {
   const [flightId, setFlightId] = useState('');
   const [path, setPath] = useState<Point[]>([]);
+  const [showSettings, setShowSettings] = useState(false);
 
   const handleSearch = async () => {
     const data = await fetchFlightPath(flightId);
@@ -32,6 +35,21 @@ function App() {
     } else {
       alert('Flight not found');
       setPath([]);
+    }
+  };
+
+  const handleSaveSettings = async (settings: { year: number; month: number; day: number; hour: number }) => {
+    console.log('Settings saved:', settings);
+    try {
+      const response = await axios.post("http://localhost:8000/generate-tmp-model-data", {
+        year: settings.year,
+        month: settings.month,
+        day: settings.day,
+        hour: settings.hour,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error saving settings:', error.response?.data || error.message);
     }
   };
 
@@ -59,7 +77,25 @@ function App() {
           style={{ marginRight: '0.5rem' }}
         />
         <button onClick={handleSearch}>Search</button>
+        <button 
+          onClick={() => setShowSettings(true)} 
+          style={{ 
+            position: 'absolute', 
+            top: '1rem', 
+            right: '3rem', 
+            marginLeft: '1rem' 
+          }}
+        >
+          Settings
+        </button>
       </div>
+
+      {showSettings && (
+        <SettingsForm
+          onClose={() => setShowSettings(false)}
+          onSave={handleSaveSettings}
+        />
+      )}
     </div>
   );
 }
