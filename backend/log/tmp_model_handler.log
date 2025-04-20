@@ -3,3 +3,6 @@
 2025-04-18 11:02:44,184 - INFO - Weather data already generated: /Users/kao-fu/Developer/fuji_view/backend/tmp/nc/20250409_170000_alt.nc
 2025-04-18 11:03:01,052 - INFO - Weather data already generated: /Users/kao-fu/Developer/fuji_view/backend/tmp/nc/20250409_160000_alt.nc
 2025-04-18 11:16:45,553 - INFO - Weather data generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/nc/20250409_160000_alt.nc
+2025-04-19 14:56:46,987 - ERROR - Input file /Users/uc/Developer/fuji_view/backend/data/own/20250409_170000.nc does not exist.
+2025-04-19 14:59:16,537 - ERROR - Input file /Users/uc/Developer/fuji_view/backend/data/own/20250409_170000.nc does not exist.
+2025-04-19 14:59:57,869 - INFO - Weather data already generated: /Users/uc/Developer/fuji_view/backend/tmp/nc/20250409_170000_alt.nc

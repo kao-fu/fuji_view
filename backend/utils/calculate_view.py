@@ -119,7 +119,7 @@ def calculate_view_image(start_point, end_point, model_path,
     worldy = 110000 * (lat - end_point["latitude"])
     worldz = np.array(nc_data["height"])
     worldz = np.array([-10] + [x for x in worldz])
-    considerVar = np.array(nc_data["CLMR"])
+    considerVar = np.array(nc_data["zCLMR"])
     considerVar[considerVar == -9999.99] = np.nan
     topo = np.array(nc_data["topo"])
 
@@ -130,45 +130,13 @@ def calculate_view_image(start_point, end_point, model_path,
     topoView = ray_track_topo([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs, 
               worldx, worldy, worldz, topo)
     cloudView = ray_track([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs,
-               worldx, worldy, worldz, cloud)
-    
-    return None
+               worldx, worldy, worldz, considerVar)
+    return topoView, cloudView
 
-def generateFigure(topoView, cloudView):
-    return None
-
-if __name__ == "__main__":
-    # Open the netCDF file
-    data = nc.Dataset("../tmp/nc/20250409_170000_alt.nc")
-    #data = nc.Dataset("../test/zMcPhy17.nc")
-    
-    aircraft = {"latitude": 34.72833251953125, "longitude": 139.1999969482422, "altitude": 5486.4}
-    fujisan  = {"latitude": 35.3606583, "longitude": 138.7068067, "altitude": 1500, "x": 0, "y": 0} #3776.0}
-    aircraft["x"] = 110000 * (aircraft["longitude"] - fujisan["longitude"])
-    aircraft["y"] = 110000 * (aircraft["latitude"] - fujisan["latitude"])
-
-    lon, lat = np.array(data["longitude"]), np.array(data["latitude"])
-    worldx = 110000 * (lon - fujisan["longitude"])
-    worldy = 110000 * (lat - fujisan["latitude"])
-    worldz = np.array(data["height"])
-    worldz = np.array([-10] + [x for x in worldz])
-    cloud = np.array(data["CLMR"])
-    topo = np.array(data["topo"])
-    
-    # Set fill value to NaN
-    cloud[cloud == -9999.99] = np.nan
-
-    ray_dirs = getRayMesh(aircraft, fujisan, figsize=(256, 256))
-
-    topoView = ray_track_topo([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs, 
-              worldx, worldy, worldz, topo)
-    cloudView = ray_track([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs,
-               worldx, worldy, worldz, cloud)
-    print(np.unique(topoView), np.unique(cloudView))
-
+def generateFigure(topoView, cloudView, output_path):
     # Define levels
     special_value = -9999.99
-    topo_levels = np.arange(0, 2500 + 100, 100)    # 0 to 2500 in 100m steps
+    topo_levels = np.arange(0, 3500 + 100, 100)    # 0 to 2500 in 100m steps
 
     # Combine all levels
     all_bounds = np.concatenate(([special_value], topo_levels))
@@ -188,9 +156,20 @@ if __name__ == "__main__":
     cmap = ListedColormap(colors)
     norm = BoundaryNorm(all_bounds, ncolors=cmap.N+2, extend='both')
 
-
+    fig, ax = plt.subplots()
     plt.pcolormesh(topoView[::-1], cmap=cmap, norm=norm)
-    plt.colorbar(extend='both')
     plt.pcolormesh(np.ma.masked_array(cloudView[::-1], cloudView[::-1]==-9999.99), cmap='grey_r', vmin=0, vmax=1)
-    plt.scatter(topoView.shape[0]//2, topoView.shape[1]//2, c="red", s=5)
-    plt.savefig("merge-aircraft.jpg", dpi=300)
+    #plt.scatter(topoView.shape[0]//2, topoView.shape[1]//2, c="red", s=5)
+    ax.axis('off')
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    plt.savefig(f"{output_path}/merge-aircraft.jpg", dpi=300)
+
+#if __name__ == "__main__":
+#    # Open the netCDF file
+#    nc_path = "../tmp/nc/20250409_170000_alt.nc"
+#    #data = nc.Dataset("../test/zMcPhy17.nc")
+#    
+#    aircraft = {"latitude": 34.72833251953125, "longitude": 139.1999969482422, "altitude": 5486.4}
+#    fujisan  = {"latitude": 35.3606583,        "longitude": 138.7068067, "altitude": 1500, "x": 0, "y": 0}
+#    topoView, cloudView = calculate_view_image(start_point=aircraft, end_point=fujisan, model_path=nc_path)
+#    generateFigure(topoView, cloudView)
