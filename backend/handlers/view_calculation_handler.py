@@ -27,18 +27,24 @@ router = APIRouter()
 class UserParams(BaseModel):
     start_point_longitude: float
     start_point_latitude: float
+    start_point_altitude: float
 
-@router.post("/generate_figure")
-def generate_weather_data(params: UserParams):
+@router.post("/generate-figure")
+def generate_figure(params: UserParams):
     try:
         home_path = Path(__file__).parent.parent
-        start_point_longitude = params.start_point_longitude
-        start_point_latitude = params.start_point_latitude
-        logging.info(f"Received start point: ({start_point_longitude}, {start_point_latitude})")
+        
+        start_point = {"latitude": params.start_point_latitude, "longitude": params.start_point_longitude, "altitude": params.start_point_altitude}
+        end_point   = {"latitude": 35.3606583, "longitude": 138.7068067, "altitude": 1500, "x": 0, "y": 0} #3776.0}
+        logging.info(f"Received start point: ({start_point['longitude']}, {start_point['latitude']}, {start_point['altitude']})")
 
-    topoImage, cloudImage = calculate_view_image(start_point_longitude, start_point_latitude)
-    generateFigure(topoImage, cloudImage, output_path=home_path / "tmp" / "figure.png")
+        topoImage, cloudImage = calculate_view_image(start_point, end_point,
+                                                     model_path=home_path / "tmp" / "nc" / "20250409_170000_alt.nc",)
+        generateFigure(topoImage, cloudImage, output_path=home_path / "tmp" / "fig" / "figure.png")
 
+    except Exception as e:
+        logging.error(f"Error generating figure: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 #        file_date = f"{year:04d}{month:02d}{day:02d}_{hour:02d}0000"
 #        input_path = home_path / "data" / "own" / f"{file_date}.nc"
 #        output_path = home_path / "tmp" / "nc" / f"{file_date}_alt.nc"

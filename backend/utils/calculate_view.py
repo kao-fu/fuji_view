@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use("Agg") 
+
 import numpy as np
 import netCDF4 as nc
 import xarray as xr
@@ -124,12 +127,12 @@ def calculate_view_image(start_point, end_point, model_path,
     topo = np.array(nc_data["topo"])
 
     # calculate the ray directions
-    ray_dirs = getRayMesh(aircraft, fujisan, figsize=(256, 256))
+    ray_dirs = getRayMesh(start_point, end_point, figsize=(256, 256))
 
     # calculate the ray tracing for topography and variable
-    topoView = ray_track_topo([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs, 
+    topoView = ray_track_topo([start_point["x"], start_point["y"], start_point["altitude"]], ray_dirs, 
               worldx, worldy, worldz, topo)
-    cloudView = ray_track([aircraft["x"], aircraft["y"], aircraft["altitude"]], ray_dirs,
+    cloudView = ray_track([start_point["x"], start_point["y"], start_point["altitude"]], ray_dirs,
                worldx, worldy, worldz, considerVar)
     return topoView, cloudView
 
@@ -162,7 +165,7 @@ def generateFigure(topoView, cloudView, output_path):
     #plt.scatter(topoView.shape[0]//2, topoView.shape[1]//2, c="red", s=5)
     ax.axis('off')
     plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
-    plt.savefig(f"{output_path}/merge-aircraft.jpg", dpi=300)
+    plt.savefig(f"{output_path}", dpi=300)
 
 #if __name__ == "__main__":
 #    # Open the netCDF file

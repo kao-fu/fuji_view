@@ -6,3 +6,20 @@
 2025-04-19 14:56:46,987 - ERROR - Input file /Users/uc/Developer/fuji_view/backend/data/own/20250409_170000.nc does not exist.
 2025-04-19 14:59:16,537 - ERROR - Input file /Users/uc/Developer/fuji_view/backend/data/own/20250409_170000.nc does not exist.
 2025-04-19 14:59:57,869 - INFO - Weather data already generated: /Users/uc/Developer/fuji_view/backend/tmp/nc/20250409_170000_alt.nc
+2025-04-21 11:01:11,660 - INFO - Received start point: (0.0, 0.0)
+2025-04-21 11:01:14,068 - INFO - Received start point: (0.0, 0.0)
+2025-04-21 11:05:25,802 - INFO - Received start point: (139.1999969482422, 34.72833251953125)
+2025-04-21 11:05:25,802 - ERROR - Error generating figure: calculate_view_image() missing 1 required positional argument: 'model_path'
+2025-04-21 11:07:14,257 - INFO - Received start point: (139.1999969482422, 34.72833251953125)
+2025-04-21 11:07:14,257 - ERROR - Error generating figure: 'float' object is not subscriptable
+2025-04-21 11:07:53,300 - INFO - Received start point: (139.1999969482422, 34.72833251953125)
+2025-04-21 11:07:53,300 - ERROR - Error generating figure: 'float' object is not subscriptable
+2025-04-21 11:07:54,637 - INFO - Received start point: (139.1999969482422, 34.72833251953125)
+2025-04-21 11:07:54,637 - ERROR - Error generating figure: 'float' object is not subscriptable
+2025-04-21 11:12:22,845 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-21 11:14:33,075 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-21 11:14:36,900 - ERROR - Error generating figure: [Errno 2] No such file or directory: '/Users/uc/Developer/fuji_view/backend/tmp/figure.png/merge-aircraft.jpg'
+2025-04-21 11:15:14,750 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-21 11:16:16,903 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-21 11:26:06,833 - INFO - Received start point: (140.1999969482422, 34.72833251953125, 5486.4)
+2025-04-21 11:26:39,165 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
