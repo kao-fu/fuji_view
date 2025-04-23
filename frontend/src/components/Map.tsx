@@ -24,6 +24,7 @@ const Map: React.FC<Props> = ({ path }) => {
     }).addTo(map);
 
     // Add markers for each point in the path
+    console.log('Path:', path);
     const markers: L.Marker[] = [];
     const bounds = L.latLngBounds([]);
     path.forEach(point => {
@@ -51,7 +52,7 @@ const Map: React.FC<Props> = ({ path }) => {
         <div>
         <p><strong>Latitude:</strong> ${point.lat}</p>
         <p><strong>Longitude:</strong> ${point.lon}</p>
-        <p><strong>Height:</strong> N/A</p>
+        <p><strong>Height:</strong> ${point.height} m </p>
         <p><strong>Time:</strong> ${point.timestamp}</p>
         <button id="generate-figure-btn">Generate Figure</button>
         </div>
