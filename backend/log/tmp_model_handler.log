@@ -56,3 +56,53 @@
 2025-04-28 17:15:19,853 - INFO - Figure already exists: /Users/uc/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
 2025-04-28 17:17:24,765 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
 2025-04-28 17:17:24,768 - INFO - Figure already exists: /Users/uc/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 11:53:23,624 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 11:53:23,649 - ERROR - Error generating figure: zCLMR not found in /
+2025-04-30 11:53:40,576 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 11:53:40,597 - ERROR - Error generating figure: zCLMR not found in /
+2025-04-30 12:33:50,552 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 12:33:50,567 - ERROR - Error generating figure: zCLMR not found in /
+2025-04-30 12:44:46,870 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 12:44:50,052 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 12:52:59,827 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 12:52:59,832 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:08:13,634 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:08:13,635 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:08:13,639 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:11:57,564 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:11:57,564 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:14:14,060 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:14:14,062 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:14:43,907 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:14:43,908 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:18:04,042 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:18:04,043 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:18:04,049 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:19:06,587 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:19:06,587 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:21:23,123 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:21:23,125 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:21:23,135 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:21:50,041 - INFO - Received start point: (137.98167419433594, 34.38166809082031, 8694.42)
+2025-04-30 13:21:54,619 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_30.png
+2025-04-30 13:21:54,626 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_30.png
+2025-04-30 13:30:19,577 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:30:19,577 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:30:19,587 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:32:47,814 - INFO - Received start point: (139.1999969482422, 34.72833251953125, 5486.4)
+2025-04-30 13:32:47,816 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_0.png
+2025-04-30 13:32:51,421 - INFO - Received start point: (139.46499633789062, 34.788333892822266, 4419.3)
+2025-04-30 13:32:53,879 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_15.png
+2025-04-30 13:32:53,885 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_15.png
+2025-04-30 13:33:02,156 - INFO - Received start point: (137.98167419433594, 34.38166809082031, 8694.42)
+2025-04-30 13:33:02,157 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_30.png
+2025-04-30 13:33:02,163 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_30.png
+2025-04-30 13:33:10,549 - INFO - Received start point: (136.07167053222656, 34.77000045776367, 5486.4)
+2025-04-30 13:33:13,441 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_29.png
+2025-04-30 13:33:13,447 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL0116_29.png
+2025-04-30 13:37:50,417 - INFO - Received start point: (140.3766632080078, 35.7599983215332, 30.48)
+2025-04-30 13:37:50,981 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL3083_0.png
+2025-04-30 13:37:50,987 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL3083_0.png
+2025-04-30 13:38:04,154 - INFO - Received start point: (140.3766632080078, 35.7599983215332, 30.48)
+2025-04-30 13:38:04,155 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL3083_0.png
+2025-04-30 13:38:04,169 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/JL3083_0.png

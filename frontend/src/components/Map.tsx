@@ -53,43 +53,56 @@ const Map: React.FC<Props> = ({ path }) => {
     // Add click event to markers to display information
     markers.forEach((marker, index) => {
       marker.on('click', async () => {
-        const point = path[index];
-        const popupContent = `
-          <div>
-          <p><strong>Latitude:</strong> ${point.lat}</p>
-          <p><strong>Longitude:</strong> ${point.lon}</p>
-          <p><strong>Height:</strong> ${point.height} m </p>
-          <p><strong>Time:</strong> ${point.timestamp}</p>
-          <button id="generate-figure-btn">Generate Figure</button>
-          </div>
-        `;
-        marker.bindPopup(popupContent).openPopup();
+      const point = path[index];
+      const popupContent = `
+        <div>
+        <p><strong>Latitude:</strong> ${point.lat}</p>
+        <p><strong>Longitude:</strong> ${point.lon}</p>
+        <p><strong>Height:</strong> ${point.height} m </p>
+        <p><strong>Time:</strong> ${point.timestamp}</p>
+        <p><strong>Flight idx:</strong> ${point.index}</p>
+        <button id="generate-figure-btn-${index}">Generate Figure</button>
+        </div>
+      `;
+      marker.bindPopup(popupContent).openPopup();
 
-        // Add event listener for the "Generate Figure" button
-        setTimeout(() => {
-          const button = document.getElementById('generate-figure-btn');
-          if (button) {
-            button.onclick = async () => {
-              setLoading(true);
-              try {
-                const response = await axios.post('http://localhost:8000/generate-figure', {
-                  start_point_longitude: point.lon,
-                  start_point_latitude: point.lat,
-                  start_point_altitude: point.height,
-                  start_point_index: point.index,
-                  start_point_flight_id: point.id
-                });
-                console.log(response.data);
-                const figurePath = response.data.output_path;
-                setFigureUrl(`${figurePath}`);
-              } catch (error) {
-                console.error('Error generating figure:', error);
-              } finally {
-                setLoading(false);
-              }
-            };
+      // Add event listener for the "Generate Figure" button
+      setTimeout(() => {
+        const button = document.getElementById(`generate-figure-btn-${index}`);
+        if (button) {
+        button.onclick = async () => {
+          setLoading(true);
+          try {
+          // Post to generate-figure endpoint
+          await axios.post('http://localhost:8000/generate-figure', {
+            start_point_longitude: point.lon,
+            start_point_latitude: point.lat,
+            start_point_altitude: point.height,
+            start_point_index: point.index,
+            start_point_flight_id: point.id
+          });
+
+          // Call the generated-figure endpoint
+          const response = await axios.get('http://localhost:8000/generated-figure', {
+            params: {
+            flight_id: point.id,
+            index: point.index,
+            },
+            responseType: 'blob', // Ensure the response is treated as a binary file
+          });
+
+          // Create a URL for the blob and set it as the figure URL
+          const blob = new Blob([response.data], { type: 'image/png' });
+          const figurePath = URL.createObjectURL(blob);
+          setFigureUrl(figurePath);
+          } catch (error) {
+          console.error('Error generating or fetching figure:', error);
+          } finally {
+          setLoading(false);
           }
-        }, 0);
+        };
+        }
+      }, 0);
       });
     });
 

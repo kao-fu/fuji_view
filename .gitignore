@@ -6,4 +6,5 @@
 **/__pycache__/
 backend/data/aircraft/*.csv
 backend/data/own/*.nc
+backend/data/test
 !**/.gitkeep

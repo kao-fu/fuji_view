@@ -12,6 +12,7 @@ from param_store import get_param
 import logging
 from pydantic import BaseModel
 from utils.calculate_view import calculate_view_image, generateFigure
+from fastapi.responses import FileResponse
 
 
 logging.basicConfig(
@@ -30,6 +31,11 @@ class UserParams(BaseModel):
     start_point_altitude: float
     start_point_index: int
     start_point_flight_id: str
+
+class UserParams2(BaseModel):
+    flight_id: str
+    index: int
+
 
 @router.post("/generate-figure")
 def generate_figure(params: UserParams):
@@ -56,23 +62,18 @@ def generate_figure(params: UserParams):
     except Exception as e:
         logging.error(f"Error generating figure: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-#        file_date = f"{year:04d}{month:02d}{day:02d}_{hour:02d}0000"
-#        input_path = home_path / "data" / "own" / f"{file_date}.nc"
-#        output_path = home_path / "tmp" / "nc" / f"{file_date}_alt.nc"
-#
-#        if not input_path.exists():
-#            logging.error(f"Input file {input_path} does not exist.")
-#            raise HTTPException(status_code=404, detail=f"Input file {input_path} does not exist.")
-#        if not output_path.parent.exists():
-#            logging.info(f"Creating output directory: {output_path.parent}")
-#            output_path.parent.mkdir(parents=True, exist_ok=True)
-#        if output_path.exists():
-#            logging.info(f"Weather data already generated: {output_path}")
-#            return {"message": "Weather data already generated", "output_path": str(output_path)}
-#
-#        tranform_nc_file(input_path, output_path)
-#        logging.info(f"Weather data generated successfully: {output_path}")
-#        return {"message": "Weather data generated successfully", "output_path": str(output_path)}
-#
-#    except Exception as e:
-#        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/generated-figure")
+def get_generated_figure(flight_id: str, index: int):
+    try:
+        home_path = Path(__file__).parent.parent
+        figure_path = home_path / "tmp" / "fig" / f"{flight_id}_{index}.png"
+        if not figure_path.exists():
+            logging.error(f"Figure not found: {figure_path}")
+            raise HTTPException(status_code=404, detail="Figure not found")
+        
+        logging.info(f"Serving figure: {figure_path}")
+        return FileResponse(figure_path, media_type="image/png")
+    except Exception as e:
+        logging.error(f"Error serving figure: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
