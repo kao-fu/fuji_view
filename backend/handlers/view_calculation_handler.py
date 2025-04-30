@@ -28,6 +28,8 @@ class UserParams(BaseModel):
     start_point_longitude: float
     start_point_latitude: float
     start_point_altitude: float
+    start_point_index: int
+    start_point_flight_id: str
 
 @router.post("/generate-figure")
 def generate_figure(params: UserParams):
@@ -38,10 +40,19 @@ def generate_figure(params: UserParams):
         end_point   = {"latitude": 35.3606583, "longitude": 138.7068067, "altitude": 1500, "x": 0, "y": 0} #3776.0}
         logging.info(f"Received start point: ({start_point['longitude']}, {start_point['latitude']}, {start_point['altitude']})")
 
-        topoImage, cloudImage = calculate_view_image(start_point, end_point,
-                                                     model_path=home_path / "tmp" / "nc" / "20250409_170000_alt.nc",)
-        generateFigure(topoImage, cloudImage, output_path=home_path / "tmp" / "fig" / "figure.png")
-
+        # if image already exists, return the path
+        if (home_path / "tmp" / "fig" / f"{params.start_point_flight_id}_{params.start_point_index}.png").exists():
+            logging.info(f"Figure already exists: {home_path / 'tmp' / 'fig' / f'{params.start_point_flight_id}_{params.start_point_index}.png'}")
+            return {"message": "Figure already exists", "output_path": str(home_path / "tmp" / "fig" / f"{params.start_point_flight_id}_{params.start_point_index}.png")}
+        else:
+            topoImage, cloudImage = calculate_view_image(start_point, end_point,
+                                                         model_path=home_path / "tmp" / "nc" / "20250409_170000_alt.nc",)
+            generateFigure(topoImage, cloudImage, output_path=home_path / "tmp" / "fig" / f"{params.start_point_flight_id}_{params.start_point_index}.png")
+            logging.info(f"Figure generated successfully: {home_path / 'tmp' / 'fig' / f'{params.start_point_flight_id}_{params.start_point_index}.png'}")
+            return {"message": "Figure generated successfully", "output_path": str(home_path / "tmp" / "fig" / f"{params.start_point_flight_id}_{params.start_point_index}.png")}
+    except FileNotFoundError as e:
+        logging.error(f"File not found: {e}")
+        raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         logging.error(f"Error generating figure: {e}")
         raise HTTPException(status_code=500, detail=str(e))
