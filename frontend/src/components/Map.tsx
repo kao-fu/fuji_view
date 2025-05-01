@@ -10,6 +10,7 @@ interface Point {
   height?: number;
   index?: number;
   id?: string;
+  date?: string;
 }
 
 interface Props {
@@ -73,13 +74,15 @@ const Map: React.FC<Props> = ({ path }) => {
         button.onclick = async () => {
           setLoading(true);
           try {
+          console.log(point)
           // Post to generate-figure endpoint
           await axios.post('http://localhost:8000/generate-figure', {
             start_point_longitude: point.lon,
             start_point_latitude: point.lat,
             start_point_altitude: point.height,
             start_point_index: point.index,
-            start_point_flight_id: point.id
+            start_point_flight_id: point.id,
+            start_point_time: point.timestamp,
           });
 
           // Call the generated-figure endpoint
@@ -87,6 +90,7 @@ const Map: React.FC<Props> = ({ path }) => {
             params: {
             flight_id: point.id,
             index: point.index,
+            date: point.date,
             },
             responseType: 'blob', // Ensure the response is treated as a binary file
           });

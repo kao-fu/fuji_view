@@ -4,9 +4,9 @@ import os
 
 router = APIRouter()
 
-@router.get("/flight/{flight_id}")
-def get_flight_path(flight_id: str):
-    file_path = "data/aircraft/2025-04-09.csv"
+@router.get("/flight/{date}_{flight_id}")
+def get_flight_path(flight_id: str, date: str):
+    file_path = f"data/aircraft/{date}.csv"
     if not os.path.exists(file_path):
         return {"found": False, "message": "Flight data not found"}
     columnNames = ["index", "time", "id", "longitude", "latitude", "height", "temperature", "airplane_type", "wind_speed", "wind_direction", "wind_u", "wind_v"]
@@ -17,7 +17,8 @@ def get_flight_path(flight_id: str):
     if filtered.empty:
         return {"found": False}
     filtered["id"] = flight_id
-    coords = filtered[["id", "latitude", "longitude", "height", "time", "index"]].to_dict(orient="records")
+    filtered["date"] = date
+    coords = filtered[["id", "latitude", "longitude", "height", "time", "index", "date"]].to_dict(orient="records")
     return {"found": True, "path": coords}
 
 @router.get("/flight-ids/{date}")

@@ -31,16 +31,17 @@ function App() {
   }, [date]);
 
   const handleSearch = async () => {
-    const data = await fetchFlightPath(flightId);
-
+    const data = await fetchFlightPath(flightId, date);
+    console.log(data);
     if (data.found) {
-      const validPath = data.path.map((point: { latitude: number; longitude: number; height: number; time: string; index: number; id: string }, index: number) => ({
+      const validPath = data.path.map((point: { latitude: number; longitude: number; height: number; time: string; index: number; id: string; date: string }, index: number) => ({
         lat:       point.latitude,
         lon:       point.longitude,
         timestamp: point.time,
         height:    point.height, // Uncomment if height is needed
         index:     index,        // Add index for secondary sorting
         id:        point.id,
+        date:      point.date
       }));
 
       validPath.sort((a, b) => {

@@ -122,7 +122,7 @@ def calculate_view_image(start_point, end_point, model_path,
     worldy = 110000 * (lat - end_point["latitude"])
     worldz = np.array(nc_data["height"])
     worldz = np.array([-10] + [x for x in worldz])
-    considerVar = np.array(nc_data["zCLMR"])
+    considerVar = np.array(nc_data["CLMR"])
     considerVar[considerVar == -9999.99] = np.nan
     topo = np.array(nc_data["topo"])
 
