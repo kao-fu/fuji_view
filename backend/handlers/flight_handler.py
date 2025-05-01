@@ -18,7 +18,28 @@ def get_flight_path(flight_id: str, date: str):
         return {"found": False}
     filtered["id"] = flight_id
     filtered["date"] = date
+    # Filter out rows where the "time" date does not match the "date" parameter
+    filtered = filtered[filtered["time"].str.startswith(date)]
+    
+    # Extract relevant columns and convert to dictionary
     coords = filtered[["id", "latitude", "longitude", "height", "time", "index", "date"]].to_dict(orient="records")
+    
+    # Sort the coords by "time" in ascending order
+    coords = sorted(coords, key=lambda x: x["time"])
+    
+    # Filter out rows where the time difference exceeds 6 hours
+    filtered_coords = []
+    previous_time = None
+    for coord in coords:
+        current_time = pd.to_datetime(coord["time"])
+        if previous_time is not None:
+            time_diff = (current_time - previous_time).total_seconds() / 3600  # Convert to hours
+            if time_diff > 6:
+                break
+        filtered_coords.append(coord)
+        previous_time = current_time
+
+    coords = filtered_coords
     return {"found": True, "path": coords}
 
 @router.get("/flight-ids/{date}")
@@ -32,4 +53,5 @@ def get_flight_ids(date: str):
     df = df.dropna()
 
     unique_ids = df["id"].unique().tolist()
+    unique_ids.sort()
     return {"flight_ids": unique_ids}
