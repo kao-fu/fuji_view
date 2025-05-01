@@ -50,7 +50,7 @@ def generate_figure(params: UserParams):
         logging.info(f"Received start point: ({start_point['longitude']}, {start_point['latitude']}, {start_point['altitude']}) @ {start_point_date} {start_point_hour}")
 
         # if image already exists, return the path
-        if (home_path / "tmp" / "fig" / f"{params.start_point_flight_id}_{params.start_point_index}.png").exists():
+        if (home_path / "tmp" / "fig" / f"{start_point_date}_{params.start_point_flight_id}_{params.start_point_index}.png").exists():
             logging.info(f"Figure already exists: {home_path / 'tmp' / 'fig' / f'{start_point_date}_{params.start_point_flight_id}_{params.start_point_index}.png'}")
             return {"message": "Figure already exists", "output_path": str(home_path / "tmp" / "fig" / f"{start_point_date}_{params.start_point_flight_id}_{params.start_point_index}.png")}
         else:

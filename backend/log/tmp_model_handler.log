@@ -133,3 +133,38 @@
 2025-05-01 12:59:03,826 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
 2025-05-01 12:59:08,722 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
 2025-05-01 12:59:08,727 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 14:59:09,503 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
+2025-05-01 14:59:14,256 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 14:59:14,264 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 15:44:57,922 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
+2025-05-01 15:45:02,640 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 15:45:02,647 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 15:45:14,048 - INFO - Received start point: (138.9983367919922, 34.7066650390625, 6705.9) @ 2025-04-09 23
+2025-05-01 15:45:17,742 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 15:45:17,749 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 15:54:40,163 - INFO - Received start point: (138.9983367919922, 34.7066650390625, 6705.9) @ 2025-04-09 23
+2025-05-01 15:54:44,101 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 15:54:44,108 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 15:56:33,652 - INFO - Received start point: (138.9983367919922, 34.7066650390625, 6705.9) @ 2025-04-09 23
+2025-05-01 15:56:37,476 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 15:56:37,485 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL0300_5.png
+2025-05-01 16:01:30,080 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
+2025-05-01 16:01:30,080 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:01:30,086 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:06:29,667 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
+2025-05-01 16:06:29,667 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:06:29,692 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:09:12,167 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-04-09 01
+2025-05-01 16:09:12,169 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:09:12,173 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-09_JL3083_28.png
+2025-05-01 16:11:18,035 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-12-31 01
+2025-05-01 16:11:18,057 - ERROR - Error generating figure: CLMR not found in /
+2025-05-01 16:12:37,607 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-12-31 01
+2025-05-01 16:12:42,350 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-12-31_DEMO_0.png
+2025-05-01 16:12:42,357 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-12-31_DEMO_0.png
+2025-05-01 16:15:02,503 - INFO - Received start point: (139.0050048828125, 34.711666107177734, 5791.2) @ 2025-04-11 07
+2025-05-01 16:15:05,808 - INFO - Figure generated successfully: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-11_JL0124_16.png
+2025-05-01 16:15:05,815 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-04-11_JL0124_16.png
+2025-05-01 16:15:35,485 - INFO - Received start point: (139.86166381835938, 35.4566650390625, 8532.88) @ 2025-12-31 01
+2025-05-01 16:15:35,486 - INFO - Figure already exists: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-12-31_DEMO_0.png
+2025-05-01 16:15:35,498 - INFO - Serving figure: /Users/kao-fu/Developer/fuji_view/backend/tmp/fig/2025-12-31_DEMO_0.png

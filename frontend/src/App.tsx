@@ -72,12 +72,19 @@ function App() {
         backgroundColor: 'rgba(240, 240, 240, 0.8)', 
         zIndex: 1000 
       }}>
-        <input
-          type="date"
+        <select
           value={date}
           onChange={e => setDate(e.target.value)}
           style={{ marginRight: '0.5rem' }}
-        />
+        >
+          <option value="2025-04-01">2025-04-01</option>
+          <option value="2025-04-02">2025-04-02</option>
+          <option value="2025-04-03">2025-04-03</option>
+          <option value="2025-04-09">2025-04-09</option>
+          <option value="2025-04-10">2025-04-10</option>
+          <option value="2025-04-11">2025-04-11</option>
+          <option value="2025-12-31">2025-12-31</option>
+        </select>
         <select
           value={flightId}
           onChange={e => setFlightId(e.target.value)}
