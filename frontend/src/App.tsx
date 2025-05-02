@@ -44,10 +44,10 @@ function App() {
         date:      point.date
       }));
 
-      validPath.sort((a, b) => {
-        const timeComparison = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
-        return timeComparison !== 0 ? timeComparison : a.index - b.index;
-      });
+      // validPath.sort((a, b) => {
+      //   const timeComparison = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+      //   return timeComparison !== 0 ? timeComparison : a.index - b.index;
+      // });
 
       setPath(validPath);
     } else {
